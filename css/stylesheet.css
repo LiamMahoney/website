@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+    margin: unset;
+    font-family: 'Roboto', sans-serif;
+    overscroll-behavior-y: none;
+    background-color: #f7f2e1;
+}
+
+:focus {
+    outline: unset;
+}
+
+.nav {
+    height: 4rem;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: transparent;
+    align-items: center;
+    display: flex; 
+    z-index: 3;   
+}
+
+.hamburger {
+    margin-left: 1rem;
+}
+
+.nav-extended {
+    height:100vh;
+    width: 100vw;
+    background-color: #fcba03;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    color: white;
+    font-size: 2rem;
+}
+
+.nav-top {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 4rem;
+    align-items: center;
+}
+.nav-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+}
+
+.nav-icon {
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+.nav-link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.nav-link-container .link {
+    margin: .25rem;
+    width: 100%; 
+    text-align: center;
+}
+
+.fade-in {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .3s linear;
+}
+
+.fade-out {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .3s, opacity .3s linear;
+}
+
+.view {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    font-size: 2rem;
+    color: rgb(0,0,0);
+}
+
+.sub-header {
+    font-size:1.25rem;
+    color: rgb(0, 0, 0);
+    opacity: .7;
+}
+
+.text {
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    opacity: .7;
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding-bottom: 3px;
+}
+
+.link:hover {
+    border-bottom: 3px solid rgb(0, 0, 0, .7);
+    padding-bottom: 0;
+    opacity: .7;
+}
+
+.icon-link {
+    color:#000000;
+}
+
+.icon-link:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.error {
+    color: #B00020;
+}
+
+
+/* INDEX.JS SPECIFIC */
+.headshot {
+    height: 225px;
+    width: auto;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.name {
+    margin-bottom: .5rem;
+}
