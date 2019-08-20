@@ -22,9 +22,10 @@ body {
     z-index: 3;   
 }
 
+/* overriding hamburger package */
 .hamburger {
     margin-left: 1rem!important;
-    padding: unset;
+    padding: unset!important;
 }
 
 .nav-extended {
