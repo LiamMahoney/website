@@ -17,13 +17,14 @@ body {
     position: fixed;
     top: 0;
     background-color: transparent;
-    align-items: center;
+    align-items: flex-end;
     display: flex; 
     z-index: 3;   
 }
 
 .hamburger {
-    margin-left: 1rem;
+    margin-left: 1rem!important;
+    padding: unset;
 }
 
 .nav-extended {
