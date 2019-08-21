@@ -4,7 +4,7 @@ body {
     margin: unset;
     font-family: 'Roboto', sans-serif;
     overscroll-behavior-y: none;
-    background-color: #f7f2e1;
+    background-color: #fafffb;
 }
 
 :focus {
