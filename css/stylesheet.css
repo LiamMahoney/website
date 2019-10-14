@@ -75,6 +75,7 @@ body {
     margin: .25rem;
     width: 100%; 
     text-align: center;
+    font-size: 1.25rem;
 }
 
 .fade-in {
@@ -99,12 +100,12 @@ body {
 }
 
 .header {
-    font-size: 2rem;
+    font-size: 1.25rem;
     color: rgb(0,0,0);
 }
 
 .sub-header {
-    font-size:1.25rem;
+    font-size:1rem;
     color: rgb(0, 0, 0);
     opacity: .7;
 }
@@ -118,11 +119,11 @@ body {
 .link {
     text-decoration: none;
     color: rgb(0, 0, 0);
-    padding-bottom: 3px;
+    padding-bottom: 2px;
 }
 
 .link:hover {
-    border-bottom: 3px solid rgb(0, 0, 0, .7);
+    border-bottom: 2px solid rgb(0, 0, 0, .7);
     padding-bottom: 0;
     opacity: .7;
 }
