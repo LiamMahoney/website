@@ -28,6 +28,11 @@ body {
     font-style: italic;
 }
 
+.nav .header a{
+    text-decoration: none;
+    color: black;
+}
+
 .link-row {
     display: flex;
 }
@@ -46,8 +51,19 @@ body {
     padding-top: 10rem;
 }
 
-/* End of new */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
 
+.error-container .header {
+    font-weight: 700;
+    font-size: 8rem;
+    font-style: italic;
+}
 
 .header {
     font-size: 1.25rem;
