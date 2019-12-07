@@ -144,6 +144,7 @@ function createTitle(title, url) {
         let link = document.createElement("a");
         link.classList.add("header", "link");
         link.setAttribute("href", url);
+        link.setAttribute("target", "_blank");
         link.innerHTML = title;
 
         div.appendChild(link);
@@ -168,11 +169,7 @@ function createGitRepo(repo) {
         let link = document.createElement("a");
         link.setAttribute("href", repo);
         link.classList.add("icon-link", "proj-git");
-
-        // github icon
-        // let icon = document.createElement("i");
-        // icon.classList.add("fab", "fa-github", "header");
-
+        link.setAttribute("target", "_blank");
 
         let icon = document.createElement("img");
         icon.setAttribute("src", "./pics/code.png")
