@@ -170,8 +170,12 @@ function createGitRepo(repo) {
         link.classList.add("icon-link", "proj-git");
 
         // github icon
-        let icon = document.createElement("i");
-        icon.classList.add("fab", "fa-github", "header");
+        // let icon = document.createElement("i");
+        // icon.classList.add("fab", "fa-github", "header");
+
+
+        let icon = document.createElement("img");
+        icon.setAttribute("src", "./pics/code.png")
 
         link.appendChild(icon);
         div.appendChild(link);
