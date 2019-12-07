@@ -8,9 +8,11 @@
 .proj-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
+.proj-header .header {
+    margin-right: 2rem;
+}
 .proj-desc {
     margin: .25rem 0;
 }

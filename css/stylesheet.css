@@ -1,103 +1,53 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 body {
-    margin: unset;
     font-family: 'Roboto', sans-serif;
-    overscroll-behavior-y: none;
-    background-color: #fafffb;
-}
-
-:focus {
-    outline: unset;
+    margin: unset;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav {
-    height: 4rem;
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     position: fixed;
     top: 0;
-    background-color: transparent;
-    align-items: flex-end;
-    display: flex; 
-    z-index: 3;   
-}
-
-/* overriding hamburger package */
-.hamburger {
-    margin-left: 2rem!important;
-    padding: unset!important;
-}
-
-.nav-extended {
-    height:100vh;
     width: 100vw;
-    background-color: #fcba03;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    color: white;
-    font-size: 2rem;
+    background-color: white;
+    z-index: 1;
 }
 
-.nav-top {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    height: 4rem;
-    align-items: center;
-}
-.nav-bottom {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 4rem;
+.nav .header {
+    font-weight: 700;
+    font-size: 4rem;
+    font-style: italic;
 }
 
-.nav-icon {
-    margin-left: .5rem;
-    margin-right: .5rem;
+.link-row {
+    display: flex;
 }
 
-.nav-link-container {
+.link-row .link {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.project-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-grow: 1;
+    flex: 1;
+    padding-top: 10rem;
 }
 
-.nav-link-container .link {
-    margin: .25rem;
-    width: 100%; 
-    text-align: center;
-    font-size: 1.25rem;
-}
+/* End of new */
 
-.fade-in {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .3s linear;
-}
-
-.fade-out {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s .3s, opacity .3s linear;
-}
-
-.view {
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 .header {
     font-size: 1.25rem;
@@ -139,17 +89,4 @@ body {
 
 .error {
     color: #B00020;
-}
-
-
-/* INDEX.JS SPECIFIC */
-.headshot {
-    height: 225px;
-    width: auto;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-}
-
-.name {
-    margin-bottom: .5rem;
 }

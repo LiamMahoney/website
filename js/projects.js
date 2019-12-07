@@ -48,7 +48,7 @@ function generateProjects(projects) {
 
         Promise.all(projectList).then((results) => {
             // Appending projects to the dom
-            let div = document.querySelector('.view');
+            let div = document.querySelector('.project-container');
             for (let x of results) {
                 div.appendChild(x);
             }
