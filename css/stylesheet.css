@@ -106,3 +106,8 @@ body {
 .error {
     color: #B00020;
 }
+
+
+@media only screen and (max-width: 600px) {
+    
+}
