@@ -111,7 +111,7 @@ body {
 @media only screen and (max-device-width: 812px) {
     .nav .header {
         font-weight: 700;
-        font-size: 6rem;
+        font-size: 8rem;
         font-style: italic;
     }
 
@@ -120,7 +120,7 @@ body {
     }
 
     .project-container {
-        padding-top: 15rem;
+        padding-top: 20rem;
     }
 
     .text {
