@@ -49,6 +49,7 @@ body {
     align-items: center;
     flex: 1;
     padding-top: 10rem;
+    padding-bottom: 2rem;
 }
 
 .error-container {
