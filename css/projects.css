@@ -38,12 +38,12 @@ code {
 
     .proj-header .header {
         margin-right: 1rem;
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 
     .proj-git img {
-        width: 3rem;
-        height: 3rem;
+        width: 3.5rem;
+        height: 3.5rem;
     }
 
     .proj-tech {
@@ -53,6 +53,6 @@ code {
     code {
         padding: 4px;
         margin-right: 1rem;
-        font-size: 2rem;
+        font-size: 2.3rem;
     }
 }
