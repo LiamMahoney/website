@@ -30,10 +30,8 @@ code {
     margin-right: .5rem;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
-  
+@media only screen and (max-device-width: 812px) {
     .project {
         width: 95%;
     }
-    
 }
