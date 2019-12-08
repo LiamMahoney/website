@@ -14,6 +14,7 @@
 .proj-header .header {
     margin-right: 1rem;
 }
+
 .proj-desc {
     margin: .25rem 0;
 }
@@ -33,5 +34,25 @@ code {
 @media only screen and (max-device-width: 812px) {
     .project {
         width: 95%;
+    }
+
+    .proj-header .header {
+        margin-right: 1rem;
+        font-size: 3rem;
+    }
+
+    .proj-git img {
+        width: 3rem;
+        height: auto;
+    }
+
+    .proj-tech {
+        margin-top: 15px;
+    }
+
+    code {
+        padding: 4px;
+        margin-right: 1rem;
+        font-size: 2rem;
     }
 }

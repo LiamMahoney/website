@@ -118,4 +118,12 @@ body {
     .link-row {
         font-size: 2rem;
     }
+
+    .project-container {
+        padding-top: 15rem;
+    }
+
+    .text {
+        font-size: 2rem;
+    }
 }
