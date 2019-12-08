@@ -108,7 +108,7 @@ body {
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-device-width: 812px) {
     .nav .header {
         font-weight: 700;
         font-size: 6rem;
