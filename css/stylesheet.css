@@ -109,5 +109,13 @@ body {
 
 
 @media only screen and (max-width: 600px) {
-    
+    .nav .header {
+        font-weight: 700;
+        font-size: 6rem;
+        font-style: italic;
+    }
+
+    .link-row {
+        font-size: 2rem;
+    }
 }
