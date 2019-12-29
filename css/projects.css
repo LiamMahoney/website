@@ -24,6 +24,11 @@
     display: flex;
 }
 
+.proj-git img {
+    height: 1.75rem;
+    width: auto;
+}
+
 code {
     border: 1px solid rgb(0, 0, 0, .7);
     border-radius: 3px;
