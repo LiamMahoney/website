@@ -9,12 +9,8 @@ let controller = {};
         if (response.ok) return response.json();
         else console.log(`${response.status} - ${response.statusText}`);//TODO: display error.
     }).then((data) => {
-        // filling UI controller object
-        // fillController(data);
-
         // creating projects
         return generateProjects(data);
-
     }).catch((err) => {
         //TODO: display error
         console.log(err);
