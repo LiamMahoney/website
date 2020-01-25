@@ -2,13 +2,14 @@
 (() => {
     // requesting projects from MongoDB 
     fetch("https://api.liammahoney.dev/projects").then((response) => {
-        if (response.ok) return response.json();
-        else console.log(`${response.status} - ${response.statusText}`);//TODO: display error.
+        return response.json();
     }).then((data) => {
         // creating projects
         return generateProjects(data);
     }).catch((err) => {
-        //TODO: display error
+        createAlert("error", "There was an error while trying to generate the projects. Sorry.").then((alert) => {
+            document.querySelector(".project-container").appendChild(alert);
+        });
         console.log(err);
     }).finally(() => {
         // removing loading spinner from page
