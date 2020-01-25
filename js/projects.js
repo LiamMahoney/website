@@ -14,6 +14,9 @@ let controller = {};
     }).catch((err) => {
         //TODO: display error
         console.log(err);
+    }).finally(() => {
+        // removing loading spinner from page
+        document.getElementById('loading-spinner').parentNode.removeChild(document.getElementById('loading-spinner'));
     });
 })();
 

@@ -108,6 +108,9 @@ body {
     color: #B00020;
 }
 
+#loading-spinner {
+    animation: rotation 2s infinite linear;
+}
 
 @media only screen and (max-device-width: 812px) {
     .nav .header {
@@ -126,5 +129,14 @@ body {
 
     .text {
         font-size: 2.3rem;
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
     }
 }
