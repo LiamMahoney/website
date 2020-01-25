@@ -1,7 +1,3 @@
-
-// object to hold various UI information
-let controller = {};
-
 // immediately invoked function - runs as soon as it's defined
 (() => {
     // requesting projects from MongoDB 
@@ -19,19 +15,6 @@ let controller = {};
         document.getElementById('loading-spinner').parentNode.removeChild(document.getElementById('loading-spinner'));
     });
 })();
-
-// /**
-//  * Constructs the controller object. The controller holds the ID of the project
-//  * in the collection, which also serves as the corresponding project's ID in the 
-//  * DOM, as well as the related technologies of the project. This will be 
-//  * used for searching for projects based on technology.
-//  * @param {array} data list of project documents from MongoDB collection
-//  */
-// function fillController(data) {
-//     for (let x of data) {
-//         controller[x._id] = x.technologies;
-//     }
-// }
 
 /**
  * Loops through array of MongoDB documents and creates UI elements
