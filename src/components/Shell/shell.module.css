@@ -6,7 +6,8 @@
 }
 
 .shellContainer[mobile-open="true"] {
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .navbar {
