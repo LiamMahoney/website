@@ -11,16 +11,14 @@ type Props = {
 }
 
 export default function Shell({ children }:Props) {
-    const [burgerOpen, setBurgerOpen] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleBurgerClick = (() => {
-        const mobileMenu = document.getElementById(styles.mobileMenu);
-        mobileMenu?.toggleAttribute("display");
-        setBurgerOpen(!burgerOpen);
+        setMobileOpen(!mobileOpen);
     });
 
     return (
-        <div className={styles.shellContainer}>
+        <div mobile-open={`${mobileOpen}`} className={styles.shellContainer}>
             <div className={styles.navbar}>
                 <div className={styles.navbarRight}>
                     <span>Liam Mahoney</span>
@@ -35,7 +33,7 @@ export default function Shell({ children }:Props) {
                         <Button icon variant="ghost">
                             <LinkedinLogo size={16} weight="bold" />
                         </Button>
-                        <Button icon variant="ghost">
+                        <Button icon variant="ghost"> 
                             <GithubLogo size={16} weight="bold" />
                         </Button>
                         <ThemeToggle variant="ghost" />
@@ -44,7 +42,7 @@ export default function Shell({ children }:Props) {
                         <Hamburger 
                             size={20} 
                             toggle={handleBurgerClick}
-                            toggled={burgerOpen}
+                            toggled={mobileOpen}
                         />
                     </span>
                 </div>
@@ -52,9 +50,7 @@ export default function Shell({ children }:Props) {
             <div className={styles.contentContainer}>
                 {children}
             </div>
-            {/* FIXME: is over 100% on mobile view - due to contentContainer being > 100%, probably need to hide it when mobile nav is displayed. annoying*/}
-            <div id={styles.mobileMenu}>
-                {/* TODO: work on animation - for sure get an out animation */}
+            <div className={styles.mobileMenu}>
                 <div className={styles.mobileLinkContainer}>
                     <Button variant="ghost" fullWidth size="xl">Home</Button>
                     <Button variant="ghost" fullWidth size="xl">Blog</Button>
