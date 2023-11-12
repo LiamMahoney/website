@@ -57,7 +57,7 @@ export default function Home() {
         return function cleanup() {
           document.removeEventListener('keyup', handleKeyUp);
         }
-      }, [currentImage]);
+      }, [currentImage, handleKeyUp]);
 
     return (
         <main className={styles.mainContainer}>
@@ -91,9 +91,9 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.textContainer}>
-                <Text size="sm">Hi, I'm Liam.</Text>
-                <Text size="sm">I'm somewhere between a Cyberecurity Engineer and Web Developer. I work alongside a Cybersecurity Incident Response Team building integrations between our SOAR platform and other security tools.</Text>
-                <Text size="sm">When I'm not on a computer I'm most likely playing with my dog or trying to grill on my Big Green Egg.</Text>
+                <Text size="sm">Hi, I&apos;m Liam.</Text>
+                <Text size="sm">I&apos;m somewhere between a Cyberecurity Engineer and Web Developer. I work alongside a Cybersecurity Incident Response Team building integrations between our SOAR platform and other security tools.</Text>
+                <Text size="sm">When I&apos;m not on a computer I&apos;m most likely playing with my dog or trying to grill on my Big Green Egg.</Text>
             </div>
 
         </main>
