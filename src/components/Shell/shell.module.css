@@ -115,6 +115,7 @@
 
 .shellContainer[mobile-open="true"] .contentContainer {
     visibility: hidden;
+    overflow-y: hidden;
 }
 
 .logo {
