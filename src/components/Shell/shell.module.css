@@ -1,0 +1,148 @@
+.shellContainer {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    background-color: hsl(var(--layout-3));
+}
+
+.navbarRight {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+.navbarRight span {
+    user-select: none;
+    font-weight: 600;
+}
+
+.navbarCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.navbarCenter * {
+    padding: 0 .2rem;
+}
+
+.navbarLeft {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+}
+
+.navbarLeft span {
+    margin: 0 1px;
+}
+
+.desktopRight {
+    display: flex;
+}
+
+.mobileRight {
+    display: none;
+}
+
+#mobileMenu {
+    /* display: none; */
+    opacity: 0;
+    /* animation-name: fadeIn; */
+    /* animation-duration: 250ms; */
+    max-height:100%;
+    bottom: calc(100% - 3rem);
+    /* transform-origin: 0 calc(-100%); */
+    /* top: -100%; */
+    /* transform: translate(0, 0); */
+    /* animation is fucked */
+    transition: bottom 1s;
+
+}
+
+.mobileLinkContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 90%;
+}
+
+.mobileLinkContainer span {
+    margin-top: .25rem;
+}
+
+.mobileIconContainer {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: .5rem;
+    margin-right: 1rem;
+}
+
+.mobileIconContainer span {
+    margin-left: .25rem;
+}
+
+.contentContainer {
+    grid-row-start: 2;
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    user-select: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to { 
+        opacity: 1; 
+    }
+}
+
+@media (max-width:600px)  {
+    .navbarCenter {
+        display: none;
+    }
+
+    .desktopRight {
+        display: none;
+    }
+
+    .mobileRight {
+        display: flex;
+    }
+
+    #mobileMenu[display] {
+        grid-row-start: 2;
+        grid-column: 1;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(var(--layout-3));
+        /* can probably delete these below */
+        bottom: 0;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,129 @@
+.fullWidth {
+    width: 100%;
+}
+
+.button {
+    --button-padding-x: 1rem;
+    --button-padding-y: .5rem;
+    --button-active-padding-adj: .05rem;
+
+    border: 1px solid;
+    border-radius: .5rem;
+    font-weight: 500;
+    letter-spacing: -0.03rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: calc(var(--button-padding-y) + var(--size-padding-y-adj)) calc(var(--button-padding-x) + var(--size-padding-x-adj));
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button:focus-visible {
+    outline:2px solid hsl(var(--layout-15));
+}
+
+.button:active {
+    transition: padding .01s, margin .01s;
+    margin: .05rem .05rem;
+    padding: calc(var(--button-padding-y) + var(--size-padding-y-adj) - var(--button-active-padding-adj)) calc(var(--button-padding-x) + var(--size-padding-x-adj) - var(--button-active-padding-adj));
+}
+
+.button[button-icon="true"] {
+    --button-padding-x: .5rem;
+    --button-padding-y: .5rem;
+}
+
+.button[full-width="true"] {
+    width: 100%;
+}
+
+.button[button-size="xs"] {
+    --size-padding-x-adj: -.4rem;
+    --size-padding-y-adj: -.5rem;
+}
+
+.button[button-size="sm"] {
+    --size-padding-x-adj: -.2rem;
+    --size-padding-y-adj: -.25rem;
+}
+
+.button[button-size="md"] {
+    --size-padding-x-adj: 0rem;
+    --size-padding-y-adj: 0rem;
+}
+
+.button[button-size="lg"] {
+    --size-padding-x-adj: .2rem;
+    --size-padding-y-adj: .25rem;
+}
+
+.button[button-size="xl"] {
+    --size-padding-x-adj: .2rem;
+    --size-padding-y-adj: .25rem;
+}
+
+.primary {
+    background-color: hsl(var(--layout-23));
+    color: hsl(var(--layout-1));
+}
+
+.primary:hover {
+    background-color: hsl(var(--layout-20));
+}
+
+.secondary {
+    border-color: hsl(var(--layout-5));
+    background-color: hsl(var(--layout-5));
+    color: inherit;
+}
+
+.secondary:hover {
+    background-color: hsl(var(--layout-6));
+}
+
+.ghost {
+    border: unset;
+    background-color: hsl(var(--layout-3));
+    color: hsl(var(--layout-23));
+}
+
+.ghost:hover {
+    background-color: hsl(var(--layout-6));
+}
+
+.outline {
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--layout-3));
+    color: hsl(var(--outline));
+}
+
+.outline:hover {
+    background-color: hsl(var(--layout-6));
+}
+
+.ghost-outline {
+    background-color: hsl(var(--layout-3));
+    border-color:  hsl(var(--layout-3));
+    /* background-color: */
+    color: hsl(var(--layout-23));
+}
+
+.ghost-outline:hover {
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--layout-3));
+}
+
+.link {
+    background-color: hsl(var(--layout-3));
+    color: hsl(var(--layout-23));
+    border-color:  hsl(var(--layout-3));
+}
+
+.link:hover {
+    text-decoration: underline;
+}

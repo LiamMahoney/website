@@ -1,95 +1,101 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useState, useEffect } from 'react';
+import styles from './page.module.css';
+import Image from 'next/image';
+import Text from '@/components/Text/text';
+import Button from '@/components/Button/button';
+import { ArrowLeft, ArrowRight } from '@phosphor-icons/react';
+
+// TODO: read from directory during build
+const imgs = [
+    "/home-imgs/03262F79-486E-4656-AD1D-F40FF46791AC.jpeg",
+    "/home-imgs/71971923599__8EE45ED4-AF2F-4684-A540-15AD6D3B1641.jpeg",
+    "/home-imgs/IMG_1237.jpeg",
+    "/home-imgs/IMG_2218.jpeg",
+    "/home-imgs/IMG_2974.png",
+    "/home-imgs/IMG_3793.jpeg",
+    "/home-imgs/IMG_3918.jpeg",
+    "/home-imgs/IMG_6624.jpeg",
+    "/home-imgs/IMG_8562.jpeg",
+    "/home-imgs/IMG_8833.jpeg",
+    "/home-imgs/IMG_8841.jpeg",
+    "/home-imgs/image000001.jpeg"
+]
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    const [currentImage, setCurrentImage] = useState(Math.round(Math.random() * (imgs.length - 1)));
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    const decrementImg = () => {
+        if (currentImage - 1 < 0) {
+            // resetting to last image
+            setCurrentImage(imgs.length - 1);
+        } else {
+            setCurrentImage(currentImage - 1);
+        }
+    }
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    const incrementImg = () => {
+        if (currentImage + 1 > imgs.length - 1) {
+            // resetting to first image
+            setCurrentImage(0);
+        } else {
+            setCurrentImage(currentImage + 1);
+        }
+    }
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+    const handleKeyUp = (e: KeyboardEvent) => {
+        if (e.key === "ArrowRight") {
+            incrementImg();
+        } else if (e.key === "ArrowLeft") {
+            decrementImg();
+        }
+    }
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+    useEffect(() => {
+        document.addEventListener('keyup', handleKeyUp);
+    
+        return function cleanup() {
+          document.removeEventListener('keyup', handleKeyUp);
+        }
+      }, [currentImage]);
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return (
+        <main className={styles.mainContainer}>
+            {/* TODO: see if flex wrapping can be improved.. really need to come up with a global max content width - maybe doesn't need to be the same from page to page though? */}
+            <div className={styles.carouselContainer}>
+                <div className={styles.imageContainer}>
+                    {/* TODO: implement lazy load URL so client matches server to avoid error? */}
+                    {/* FIXME: doesn't resize when browser is resized vertically to a size smaller than div */}
+                    <Image
+                        src={imgs[currentImage]}
+                        // TODO: figure out a way to dynamically store alt with image
+                        // TODO: if above is do-able, display alt as tool-tip?
+                        alt="liam and his dog"
+                        sizes="400px"
+                        fill
+                        style={{
+                          objectFit: 'contain',
+                          borderRadius: '20px'
+                        }}
+                    />
+                    </div>
+                <div className={styles.imageButtonContainer}>
+                    {/* TODO: figure out swipe on mobile */}
+                    {/* TODO: add animation to images sliding to right / left depending on direction clicked? */}
+                    <Button icon variant="ghost" onClick={decrementImg}>
+                        <ArrowLeft size={16} weight="bold"/>
+                    </Button>
+                    <Button icon variant="ghost" onClick={incrementImg}>
+                        <ArrowRight size={16} weight="bold"/>
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.textContainer}>
+                <Text size="sm">Hi, I'm Liam.</Text>
+                <Text size="sm">I'm somewhere between a Cyberecurity Engineer and Web Developer. I work alongside a Cybersecurity Incident Response Team building integrations between our SOAR platform and other security tools.</Text>
+                <Text size="sm">When I'm not on a computer I'm most likely playing with my dog or trying to grill on my Big Green Egg.</Text>
+            </div>
+
+        </main>
+    )
 }
