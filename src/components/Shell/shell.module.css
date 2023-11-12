@@ -62,7 +62,7 @@
 }
 
 .mobileMenu {
-    height: calc(100vh - 3rem);
+    height: calc(100% - 3rem);
     width: 100%;
     position: absolute;
     grid-row-start: 2;
@@ -109,13 +109,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    visibility: visible;
-    transition: visibility 1s;
+    height: 100%;
+    transition: height 0s 0s;
 }
 
 .shellContainer[mobile-open="true"] .contentContainer {
-    visibility: hidden;
-    overflow-y: hidden;
+    height: 0;
+    transition: height 0s .4s;
 }
 
 .logo {
