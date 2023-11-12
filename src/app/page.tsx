@@ -66,6 +66,7 @@ export default function Home() {
                 <div className={styles.imageContainer}>
                     {/* TODO: implement lazy load URL so client matches server to avoid error? */}
                     {/* FIXME: doesn't resize when browser is resized vertically to a size smaller than div */}
+                    {/* TODO: need to figure out pre-loading images. Might need to add + hide +/- two images from current image? */}
                     <Image
                         src={imgs[currentImage]}
                         // TODO: figure out a way to dynamically store alt with image
