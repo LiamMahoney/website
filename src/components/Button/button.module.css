@@ -88,7 +88,7 @@
 
 .ghost {
     border: unset;
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--layout-2));
     color: hsl(var(--layout-23));
 }
 
@@ -98,7 +98,7 @@
 
 .outline {
     border-color: hsl(var(--border));
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
     color: hsl(var(--outline));
 }
 
@@ -107,21 +107,21 @@
 }
 
 .ghost-outline {
-    background-color: hsl(var(--layout-3));
-    border-color:  hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
+    border-color:  hsl(var(--background-color));
     /* background-color: */
     color: hsl(var(--layout-23));
 }
 
 .ghost-outline:hover {
     border-color: hsl(var(--border));
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
 }
 
 .link {
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
     color: hsl(var(--layout-23));
-    border-color:  hsl(var(--layout-3));
+    border-color:  hsl(var(--background-color));
 }
 
 .link:hover {

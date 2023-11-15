@@ -17,7 +17,7 @@
     height: 3rem;
     display: flex;
     align-items: center;
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
     z-index: 1;
 }
 
@@ -38,7 +38,7 @@
     justify-content: center;
 }
 
-.navbarCenter * {
+.navbarCenter span {
     padding: 0 .2rem;
 }
 
@@ -71,7 +71,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
 
     bottom: calc(100% - 3rem);
     transition: bottom .4s ease-out;

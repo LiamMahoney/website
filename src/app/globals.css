@@ -26,7 +26,11 @@
     --layout-24: 0, 0%, 4%;
     --layout-25: 0, 0%, 0%;
 
+    /* COLORS */
     --border: var(--layout-6);
+    --background-color: var(--layout-2);
+
+    /* LAYOUT */
     --content-width: 700px;
 }
 
@@ -60,7 +64,7 @@
 }
 
 html {
-    background-color: hsl(var(--layout-3));
+    background-color: hsl(var(--background-color));
     color: hsl(var(--layout-23));
     height: 100%;
     height: -webkit-fill-available; 
