@@ -57,6 +57,8 @@ export default function Shell({ children }:Props) {
                 </div>
                 <div className={styles.mobileIconContainer}>
                     {/* TODO: add links */}
+                    {/* TODO: figure out best way to increase text size. way too small on mobile */}
+                    {/* FIXME: opening mobile nav and closing results in page getting reset to top.. not ideal */}
                     <Button icon variant="ghost" size="lg">
                         <LinkedinLogo size={20} weight="bold" />
                     </Button>
