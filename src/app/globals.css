@@ -31,7 +31,10 @@
     --background-color: var(--layout-2);
 
     /* LAYOUT */
-    --content-width: 700px;
+    --content-width: 650px;
+    --max-content-width: 90%;
+    min-height: 100%;
+    width: 100%;
 }
 
 :root[data-theme='dark'] {
@@ -61,13 +64,13 @@
     --layout-23: 0, 0%, 92%;
     --layout-24: 0, 0%, 96%;
     --layout-25: 0, 0%, 100%;
+
+    --background-color: var(--layout-3);
 }
 
 html {
     background-color: hsl(var(--background-color));
     color: hsl(var(--layout-23));
-    height: 100%;
-    height: -webkit-fill-available; 
 }
 
 body {

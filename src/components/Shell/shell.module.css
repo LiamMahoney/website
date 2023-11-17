@@ -1,150 +1,146 @@
-.shellContainer {
-    height: 100%;
+.top_container {
     width: 100%;
-    display: grid;
-    grid-template-rows: 50px 1fr;
-}
-
-.shellContainer[mobile-open="true"] {
-    overflow-y: hidden;
-    overflow-x: hidden;
+    height: 100%;
+    --nav-height: 40px;
 }
 
 .navbar {
-    position: sticky;
+    /* bottom border applied by mobile_nav class */
+    height: var(--nav-height);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
     top: 0;
-    width: 100%;
-    height: 3rem;
-    display: flex;
-    align-items: center;
     background-color: hsl(var(--background-color));
-    z-index: 1;
+    z-index: 3;
 }
 
-.navbarRight {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 1rem;
-}
-
-.navbarRight span {
-    user-select: none;
-    font-weight: 600;
-}
-
-.navbarCenter {
-    display: flex;
-    justify-content: center;
-}
-
-.navbarCenter span {
-    padding: 0 .2rem;
-}
-
-.navbarLeft {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem;
-}
-
-.navbarLeft span {
-    margin: 0 1px;
-}
-
-.desktopRight {
-    display: flex;
-}
-
-.mobileRight {
-    display: none;
-}
-
-.mobileMenu {
-    height: calc(100% - 3rem);
-    width: 100%;
-    position: absolute;
-    grid-row-start: 2;
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: hsl(var(--background-color));
-
-    bottom: calc(100% - 3rem);
-    transition: bottom .4s ease-out;
-}
-
-.mobileLinkContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    width: 90%;
-}
-
-.mobileLinkContainer span {
-    margin-top: .25rem;
-}
-
-.mobileIconContainer {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    margin-bottom: .5rem;
-    margin-right: 1rem;
-}
-
-.mobileIconContainer span {
-    margin-left: .25rem;
-}
-
-.contentContainer {
-    grid-row-start: 2;
-    grid-column: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.navbar_center_container {
+    width: var(--content-width);
+    max-width: var(--max-content-width);
     height: 100%;
-    transition: height 0s 0s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.shellContainer[mobile-open="true"] .contentContainer {
-    height: 0;
-    transition: height 0s .4s;
+.navbar_center_left {
+    /* controlling children of container */
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .logo {
     user-select: none;
+    font-weight: 600;
+    letter-spacing: -.025rem;
+    white-space: nowrap;
+    margin: unset;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to { 
-        opacity: 1; 
-    }
+.navbar_center_center {
+    display: flex;
+    height: 100%;
+    align-items: center;
 }
 
-@media (max-width:600px)  {
-    .navbarCenter {
+.navbar_center_center span {
+    /* applies space between buttons without ruining 'animation' */
+    margin: 0 2px;
+}
+
+.navbar_center_right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar_center_right span {
+    /* applies space between buttons without ruining 'animation' */
+    margin: 0 2px;
+}
+
+.navbar_center_right_mobile {
+    /* hides hamburger */
+    display: none;
+}
+
+.mobile_nav {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    transition: top .6s, bottom .4s;
+    background-color: hsl(var(--background-color));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* applies border to bottom of navbar, positions navbar _almost_ out of the view port above it */
+    top: calc(-100% + var(--nav-height) + 1px);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.top_container[mobile-menu-open=true] .mobile_nav {
+    /* moves mobile nav fully into viewport */
+    bottom: 0;
+    top: 0;
+}
+
+.mobile_nav_center_container {
+    /* pushes bottom navbar container to bottom */
+    flex: 1;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile_nav_center_container span {
+    margin: 5px 0;
+}
+
+.mobile_button_text {
+    font-size: 20px;
+}
+
+.mobile_nav_bottom_container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.mobile_nav_bottom_container span {
+    margin: 0 2px;
+}
+
+.content_container {
+    min-height: 100%;
+    width: 100%;
+    margin-top: var(--nav-height);
+    padding-bottom: var(--nav-height);
+}
+
+/* Would be nice to be able to use --max-content-width variable here, but I believe they can't be used in media queries. yet.. */
+@media (max-width: 650px)  {
+
+    .navbar_center_right {
+        /* pushes hamburger to far right */
+        flex: 1;
+    }
+
+    .navbar_center_center, .navbar_center_right {
+        /* hides links and icons */
         display: none;
     }
 
-    .desktopRight {
-        display: none;
-    }
-
-    .mobileRight {
+    .navbar_center_right_mobile {
+        /* displays hamburger */
         display: flex;
-    }
-
-    .shellContainer[mobile-open="true"] .mobileMenu {
-        bottom: 0;
     }
 }
