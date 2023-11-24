@@ -1,5 +1,5 @@
 .singleCenterColumn {
-    min-height: 100%;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -43,12 +43,15 @@
     width: 300px;
 }
 
-.textContainer {
-    flex: 1;
-}
-
 @media (max-width:650px)  {
     .content {
         max-width: 90%;
     }
+}
+
+.testContainer {
+    height: 2000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
