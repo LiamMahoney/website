@@ -75,8 +75,7 @@ export default function Home() {
                             sizes="400px"
                             fill
                             style={{
-                            objectFit: 'contain',
-                            borderRadius: '20px'
+                            objectFit: 'contain'
                             }}
                         />
                     </div>
