@@ -1,9 +1,19 @@
-.mainContainer {
-    max-width: 700px;
+.singleCenterColumn {
+    min-height: 100%;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    min-height: 100%;
 }
 
 .carouselContainer {
@@ -35,13 +45,10 @@
 
 .textContainer {
     flex: 1;
-    padding-left: 25px;
-    min-width: 250px;
-    max-width: 80%;
 }
 
-@media (max-width:600px)  {
-    .mainContainer {
+@media (max-width:650px)  {
+    .content {
         max-width: 90%;
     }
 }

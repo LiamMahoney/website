@@ -59,43 +59,46 @@ export default function Home() {
         }
       }, [currentImage]);
 
-    return (
-        <main className={styles.mainContainer}>
-            {/* TODO: see if flex wrapping can be improved.. really need to come up with a global max content width - maybe doesn't need to be the same from page to page though? */}
-            <div className={styles.carouselContainer}>
-                <div className={styles.imageContainer}>
-                    {/* TODO: implement lazy load URL so client matches server to avoid error? */}
-                    {/* FIXME: doesn't resize when browser is resized vertically to a size smaller than div */}
-                    <Image
-                        src={imgs[currentImage]}
-                        // TODO: figure out a way to dynamically store alt with image
-                        // TODO: if above is do-able, display alt as tool-tip?
-                        alt="liam and his dog"
-                        sizes="400px"
-                        fill
-                        style={{
-                          objectFit: 'contain',
-                          borderRadius: '20px'
-                        }}
-                    />
-                    </div>
-                <div className={styles.imageButtonContainer}>
-                    {/* TODO: figure out swipe on mobile */}
-                    {/* TODO: add animation to images sliding to right / left depending on direction clicked? */}
-                    <Button icon variant="ghost" onClick={decrementImg}>
-                        <ArrowLeft size={16} weight="bold"/>
-                    </Button>
-                    <Button icon variant="ghost" onClick={incrementImg}>
-                        <ArrowRight size={16} weight="bold"/>
-                    </Button>
-                </div>
-            </div>
-            <div className={styles.textContainer}>
-                <Text size="sm">Hi, I&apos;m Liam.</Text>
-                <Text size="sm">I&apos;m somewhere between a Cyberecurity Engineer and Web Developer. I work alongside a Cybersecurity Incident Response Team building integrations between our SOAR platform and other security tools.</Text>
-                <Text size="sm">When I&apos;m not on a computer I&apos;m most likely playing with my dog or trying to grill on my Big Green Egg.</Text>
-            </div>
 
-        </main>
+    return (
+        <div className={styles.singleCenterColumn}>
+            <main className={styles.content}>
+
+                {/* TODO: see if flex wrapping can be improved.. really need to come up with a global max content width - maybe doesn't need to be the same from page to page though? */}
+                <div className={styles.carouselContainer}>
+                    <div className={styles.imageContainer}>
+                        {/* TODO: implement lazy load URL so client matches server to avoid error? */}
+                        {/* FIXME: doesn't resize when browser is resized vertically to a size smaller than div */}
+                        <Image
+                            src={imgs[currentImage]}
+                            // TODO: figure out a way to dynamically store alt with image
+                            // TODO: if above is do-able, display alt as tool-tip?
+                            alt="liam and his dog"
+                            sizes="400px"
+                            fill
+                            style={{
+                            objectFit: 'contain',
+                            borderRadius: '20px'
+                            }}
+                        />
+                    </div>
+                    <div className={styles.imageButtonContainer}>
+                        {/* TODO: figure out swipe on mobile */}
+                        {/* TODO: add animation to images sliding to right / left depending on direction clicked? */}
+                        <Button icon variant="ghost" onClick={decrementImg}>
+                            <ArrowLeft size={16} weight="bold"/>
+                        </Button>
+                        <Button icon variant="ghost" onClick={incrementImg}>
+                            <ArrowRight size={16} weight="bold"/>
+                        </Button>
+                    </div>
+                </div>
+                <div className={styles.textContainer}>
+                    <Text size="sm">Hi, I&apos;m Liam.</Text>
+                    <Text size="sm">I&apos;m somewhere between a Cyberecurity Engineer and Web Developer. I work alongside a Cybersecurity Incident Response Team building integrations between our SOAR platform and other security tools.</Text>
+                    <Text size="sm">When I&apos;m not on a computer I&apos;m most likely playing with my dog or trying to grill on my Big Green Egg.</Text>
+                </div>
+            </main>
+        </div>
     )
 }

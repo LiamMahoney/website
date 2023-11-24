@@ -2,7 +2,6 @@
     width: 100%;
     min-height: 100%;
     --nav-height: 40px;
-    position: fixed;
     display: flex;
 }
 
@@ -83,6 +82,7 @@
     /* applies border to bottom of navbar, positions navbar _almost_ out of the view port above it */
     top: calc(-100% + var(--nav-height) + 1px);
     border-bottom: 1px solid hsl(var(--border));
+    z-index: 2;
 }
 
 .top_container[mobile-menu-open=true] .mobile_nav {
@@ -125,8 +125,6 @@
     min-height: 100%;
     width: 100%;
     margin-top: calc(var(--nav-height) + 1px);
-    
-    /* padding-bottom: var(--nav-height); */
 }
 
 /* Would be nice to be able to use --max-content-width variable here, but I believe they can't be used in media queries. yet.. */
