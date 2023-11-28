@@ -62,7 +62,6 @@ export default function Home() {
     return (
         <div className={styles.singleCenterColumn}>
             <main className={styles.content}>
-                {/* TODO: see if flex wrapping can be improved.. really need to come up with a global max content width - maybe doesn't need to be the same from page to page though? */}
                 <div className={styles.carouselContainer}>
                     <div className={styles.imageContainer}>
                         {/* TODO: implement lazy load URL so client matches server to avoid error? */}
@@ -75,7 +74,7 @@ export default function Home() {
                             sizes="400px"
                             fill
                             style={{
-                            objectFit: 'contain'
+                                objectFit: 'contain'
                             }}
                         />
                     </div>
