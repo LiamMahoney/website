@@ -73,12 +73,13 @@
     --layout-24: 0, 0%, 96%;
     --layout-25: 0, 0%, 100%;
 
-    --background-color: var(--layout-3);
+    --background-color: var(--layout-2);
 }
 
 html {
     background-color: hsl(var(--background-color));
     color: hsl(var(--layout-23));
+    box-sizing: border-box;
 }
 
 body {

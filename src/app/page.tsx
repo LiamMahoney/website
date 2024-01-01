@@ -1,100 +1,205 @@
 "use client";
-import { useState, useEffect } from 'react';
 import styles from './page.module.css';
-import Image from 'next/image';
-import Text from '@/components/Text/text';
-import Button from '@/components/Button/button';
-import { ArrowLeft, ArrowRight } from '@phosphor-icons/react';
+import PostListing from '@/components/PostListing/postListing';
+import { MagnifyingGlass } from '@phosphor-icons/react';
+import { useState, useRef, useEffect} from 'react';
+const debounce = require('lodash.debounce');
 
-// TODO: read from directory during build
-const imgs = [
-    "/home-imgs/03262F79-486E-4656-AD1D-F40FF46791AC.jpeg",
-    "/home-imgs/71971923599__8EE45ED4-AF2F-4684-A540-15AD6D3B1641.jpeg",
-    "/home-imgs/IMG_1237.jpeg",
-    "/home-imgs/IMG_2218.jpeg",
-    "/home-imgs/IMG_2974.png",
-    "/home-imgs/IMG_3793.jpeg",
-    "/home-imgs/IMG_3918.jpeg",
-    "/home-imgs/IMG_6624.jpeg",
-    "/home-imgs/IMG_8562.jpeg",
-    "/home-imgs/IMG_8833.jpeg",
-    "/home-imgs/IMG_8841.jpeg",
-    "/home-imgs/image000001.jpeg"
+const posts = [
+    {
+        title: "Scheduled Podman Containers",
+        tags: ["podman", "systemd"],
+        createDate: "2023-12-02"
+    },
+    {
+        title: "Podman Container Remote Logging",
+        tags: ["podman", "systemd"],
+        createDate: "2023-12-15"
+    },
+    {
+        title: "Podman Event Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-21"
+    },
+    {
+        title: "Storing Secrets in Python Configuration Files",
+        tags: ["python"],
+        createDate: "2024-1-18"
+    },
+    {
+        title: "Python Web Request Error Handling",
+        tags: ["python", "tag2"],
+        createDate: "2024-2-5"
+    },
+    {
+        title: "Scheduled Podman Containers",
+        tags: ["podman"],
+        createDate: "2023-12-02"
+    },
+    {
+        title: "Podman Container Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-15"
+    },
+    {
+        title: "Podman Event Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-21"
+    },
+    {
+        title: "Storing Secrets in Python Configuration Files",
+        tags: ["python"],
+        createDate: "2024-1-18"
+    },
+    {
+        title: "Python Web Request Error Handling",
+        tags: ["python"],
+        createDate: "2024-2-5"
+    },
+    {
+        title: "Scheduled Podman Containers",
+        tags: ["podman"],
+        createDate: "2023-12-02"
+    },
+    {
+        title: "Podman Container Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-15"
+    },
+    {
+        title: "Podman Event Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-21"
+    },
+    {
+        title: "Storing Secrets in Python Configuration Files",
+        tags: ["python"],
+        createDate: "2024-1-18"
+    },
+    {
+        title: "Python Web Request Error Handling",
+        tags: ["python"],
+        createDate: "2024-2-5"
+    },
+    {
+        title: "Scheduled Podman Containers",
+        tags: ["podman"],
+        createDate: "2023-12-02"
+    },
+    {
+        title: "Podman Container Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-15"
+    },
+    {
+        title: "Podman Event Remote Logging",
+        tags: ["podman"],
+        createDate: "2023-12-21"
+    },
+    {
+        title: "Storing Secrets in Python Configuration Files",
+        tags: ["python"],
+        createDate: "2024-1-18"
+    },
+    {
+        title: "Python Web Request Error Handling",
+        tags: ["python"],
+        createDate: "2024-2-5"
+    },
 ]
 
+
 export default function Home() {
-    const [currentImage, setCurrentImage] = useState(Math.round(Math.random() * (imgs.length - 1)));
-
-    const decrementImg = () => {
-        if (currentImage - 1 < 0) {
-            // resetting to last image
-            setCurrentImage(imgs.length - 1);
-        } else {
-            setCurrentImage(currentImage - 1);
-        }
-    }
-
-    const incrementImg = () => {
-        if (currentImage + 1 > imgs.length - 1) {
-            // resetting to first image
-            setCurrentImage(0);
-        } else {
-            setCurrentImage(currentImage + 1);
-        }
-    }
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-        if (e.key === "ArrowRight") {
-            incrementImg();
-        } else if (e.key === "ArrowLeft") {
-            decrementImg();
-        }
-    }
-
-    useEffect(() => {
-        document.addEventListener('keyup', handleKeyUp);
+    const [displayedPosts, setDisplayedPosts] = useState(posts);
+    const inputRef = useRef<HTMLInputElement>(null);
     
-        return function cleanup() {
-          document.removeEventListener('keyup', handleKeyUp);
+    // adds focus to filter input when `/` key is pressed
+    useEffect(() => {
+        const handleKeyDown = (e:KeyboardEvent) => {
+            if (e.key === '/') {
+                e.preventDefault();
+                if (inputRef && inputRef.current) {
+                    inputRef.current.focus();
+                }
+            }
         }
-      }, [currentImage]);
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        const cleanup = () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+    }, []);
+
+    // filtering posts based on title + tag text matching input
+    const textFilter = ((e:React.ChangeEvent<HTMLInputElement>) => {
+        const lowerValue = e.target.value.toLowerCase();
+
+        setDisplayedPosts(displayedPosts.filter((post) => {
+            if (post.title.toLowerCase().includes(lowerValue)) {
+                // whether the post title contains the text
+                return true;
+            } else {
+                // whether or not any of the post's tags contain the text
+                return post.tags.reduce((a, i) => {
+                    if (i.toLowerCase().includes(lowerValue)) {
+                        return true;
+                    } else {
+                        //true if match found, false if not
+                        return a;
+                    }
+                }, false);
+            }
+        }));
+    });
+    const debouncedTextFilter = debounce(textFilter, 300);
+    const handleInputChange = ((e:React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.value.length === 0) {
+            // filter text removed - reset list of posts
+            // don't debounce value
+            // fixes issue of user having something typed, quickly CTRL+A, 
+            /// delete and typing a different filter value
+            setDisplayedPosts(posts);
+        } else {
+            // filter text present - debounce filter
+            debouncedTextFilter(e);
+        }
+    });
 
     return (
-        <div className={styles.singleCenterColumn}>
-            <main className={styles.content}>
-                <div className={styles.carouselContainer}>
-                    <div className={styles.imageContainer}>
-                        {/* TODO: implement lazy load URL so client matches server to avoid error? */}
-                        {/* FIXME: doesn't resize when browser is resized vertically to a size smaller than div */}
-                        <Image
-                            src={imgs[currentImage]}
-                            // TODO: figure out a way to dynamically store alt with image
-                            // TODO: if above is do-able, display alt as tool-tip?
-                            alt="liam and his dog"
-                            sizes="400px"
-                            fill
-                            style={{
-                                objectFit: 'contain'
-                            }}
-                        />
-                    </div>
-                    <div className={styles.imageButtonContainer}>
-                        {/* TODO: figure out swipe on mobile */}
-                        {/* TODO: add animation to images sliding to right / left depending on direction clicked? */}
-                        <Button icon variant="ghost" onClick={decrementImg}>
-                            <ArrowLeft size={16} weight="bold"/>
-                        </Button>
-                        <Button icon variant="ghost" onClick={incrementImg}>
-                            <ArrowRight size={16} weight="bold"/>
-                        </Button>
+        <div className={styles.content_container}>
+            <div className={styles.left_container}/>
+            <div className={styles.center_container}>
+                {/* TODO: check if list length is 0, if so display some no posts found text (filter supplied) */}
+                {displayedPosts.map(post => (
+                    <PostListing
+                        title={post.title}
+                        tags={post.tags}
+                        publishDate={post.createDate}
+                    />
+                ))}
+            </div>
+            {/* TODO: mobile filters? */}
+            <div className={styles.right_container}>
+                <div className={styles.filter_container}>
+                    <div className={styles.filter_content}>
+                        {/* TODO: add magnifying glass icon - not working on safari???!!!*/}
+                        {/* TODO: add key (KBD?) to enable focus */}
+                        <div className={styles.search_bar}>
+                            <input ref={inputRef} onChange={handleInputChange} placeholder="" />
+                            <MagnifyingGlass className={styles.search_bar_left_icon} />
+                            {/* TODO: style KBD better*/}
+                            {/* TODO: get KBD to dissappear when input is focused - I guess not huge deal if I can't figure it out? */}
+                            <kbd className={styles.search_bar_right_icon}>/</kbd>
+                        </div>
+                        <p className={styles.header_text}>Tags</p>
+                        <div className={styles.tag_container}>
+                            {/* TODO: populate with tags */}
+                            {/* TODO: tag filter functionality */}
+                        </div>
                     </div>
                 </div>
-                <div className={styles.textContainer}>
-                    <Text size="sm">Hi, I&apos;m Liam.</Text>
-                    <Text size="sm">I&apos;m somewhere between a Cyberecurity Engineer and Web Developer. I work alongside a Cybersecurity Incident Response Team building integrations between our SOAR platform and other security tools.</Text>
-                    <Text size="sm">When I&apos;m not on a computer I&apos;m most likely playing with my dog or trying to grill on my Big Green Egg.</Text>
-                </div>
-            </main>
+            </div>
         </div>
     )
 }

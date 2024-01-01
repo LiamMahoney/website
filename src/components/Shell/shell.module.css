@@ -1,7 +1,7 @@
 .top_container {
     width: 100%;
     min-height: 100%;
-    --nav-height: 40px;
+    --nav-height: 80px;
     display: flex;
 }
 
@@ -121,11 +121,7 @@
     margin: 0 2px;
 }
 
-.content_container {
-    min-height: 100%;
-    width: 100%;
-    margin-top: calc(var(--nav-height) + 1px);
-}
+
 
 /* Would be nice to be able to use --max-content-width variable here, but I believe they can't be used in media queries. yet.. */
 @media (max-width: 650px)  {

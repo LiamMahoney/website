@@ -1,0 +1,37 @@
+.post_listing_container {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+.post_title {
+    font-weight: 500;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.post_title:hover {
+    color: hsl(var(--layout-18));
+    cursor: pointer;
+}
+
+.post_meta_container {
+    display: flex;
+    margin-top: 2px;
+}
+
+.post_date {
+    font-weight: 400;
+    font-size: .8rem;
+    color: hsl(var(--layout-18));
+    letter-spacing: -.0125rem;
+    width: 80px;
+}
+
+.tag {
+    font-weight: 400;
+    font-size: .8rem;
+    color: hsl(var(--layout-18));
+    margin-right: 10px;
+    letter-spacing: -.0125rem;
+}

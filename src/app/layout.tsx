@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Shell from '@/components/Shell/shell';
+import Shell2 from '@/components/Shell2/shell2';
 import { Providers } from './providers'
  
 export const metadata: Metadata = {
@@ -18,9 +18,9 @@ export default function RootLayout({ children }: Props) {
         <html lang="en" suppressHydrationWarning>
             <body>
                 <Providers>
-                    <Shell>
+                    <Shell2>
                         {children}
-                    </Shell>
+                    </Shell2>
                 </Providers>
             </body>
         </html>

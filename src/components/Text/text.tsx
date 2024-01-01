@@ -6,7 +6,7 @@ type Props = {
     muted?: boolean
 }
 
-export default function Header({ muted, size, children }:Props) {
+export default function Text({ muted, size, children }:Props) {
 
     const classNames = [styles.text, styles[size], muted ? styles.muted : ''].join(' ');
 
